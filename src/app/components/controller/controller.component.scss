@@ -3,21 +3,20 @@
     display: flex;
     justify-content: center;
     .btn-group {
-      width: 50%;
       display: flex;
+      width: 50%;
       .btn {
         display: flex;
         flex-grow: 1;
         justify-content: center;
         align-items: center;
+        &.mat-button-toggle-checked {
+          background-color: unset;
+        }
         &-large {
           flex-grow: 6;
         }
       }
     }
-  }
-
-  .mat-button-toggle-checked {
-    background-color: unset;
   }
 }
