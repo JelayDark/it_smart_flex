@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import { Subject, Subscription } from 'rxjs';
 import { KEY_LIST, KEY_PAUSED } from '../../constants';
 import { TimerLocalStorageService } from '../timer-local-storage/timer-local-storage.service';
 import { TimerWebWorkerService } from '../timer-web-worker/timer-web-worker.service';
@@ -11,12 +11,13 @@ export class TimerService {
 
   PauseChecker: Subject<boolean> = new Subject<boolean>();
   StopListChecker: Subject<number[]> = new Subject<number[]>();
+  storageSub: Subscription;
 
   constructor(
     private timerLS: TimerLocalStorageService,
     private timerWW: TimerWebWorkerService,
   ) {
-    this.timerLS.storageEvent.subscribe((e: StorageEvent) => {
+    this.storageSub = this.timerLS.storageEvent.subscribe((e: StorageEvent) => {
       const { key, newValue } = e;
       const value = JSON.parse(newValue);
       this.onChange(key, value);
@@ -78,8 +79,10 @@ export class TimerService {
     }
   }
 
-  // stopChanges(): void {
-  //   this.PauseChecker.complete();
-  //   this.StopList.complete();
-  // }
+  stopChanges(): void {
+    this.PauseChecker.complete();
+    this.StopListChecker.complete();
+    this.storageSub.unsubscribe();
+    this.timerWW.finish();
+  }
 }

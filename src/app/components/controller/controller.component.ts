@@ -1,4 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { TimerService } from '../../services/timer/timer.service';
 import { TimerWebWorkerService } from '../../services/timer-web-worker/timer-web-worker.service';
 
@@ -10,6 +11,7 @@ import { TimerWebWorkerService } from '../../services/timer-web-worker/timer-web
 export class ControllerComponent implements OnInit, OnDestroy {
   ticks = 0;
   paused = true;
+  subscriptions: Subscription[] = [];
 
   constructor(
     private timer: TimerService,
@@ -18,13 +20,14 @@ export class ControllerComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.paused = this.timer.getPause();
-    this.timerWW.TimerCounter.subscribe((ticks) => this.ticks = ticks);
-    this.timer.PauseChecker.subscribe((paused) => this.paused = paused);
+    this.subscriptions.push(
+      this.timerWW.TimerCounter.subscribe((ticks) => this.ticks = ticks),
+      this.timer.PauseChecker.subscribe((paused) => this.paused = paused),
+    );
   }
 
   ngOnDestroy() {
-    // this.storage.stopSubscription();
-    // @TODO: stop subscribes!
+    this.subscriptions.forEach((s) => s.unsubscribe());
   }
 
   control(): void {

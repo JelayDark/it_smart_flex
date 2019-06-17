@@ -37,4 +37,9 @@ export class TimerWebWorkerService {
     this.updatePause(true);
     this.send(RESET_TIME);
   }
+
+  finish(): void {
+    this.TimerCounter.complete();
+    this.TimerWorker.terminate();
+  }
 }

@@ -1,0 +1,57 @@
+<div class="wrapper">
+  <ul class="digit mm--1">
+    <li
+      *ngFor="let i of array"
+      class="digit__item item--{{i}}"
+      [class.active]="aciveMM[0].includes(i)"
+      [ngClass]="[1,4,7].includes(i) ? 'item--h' : 'item--v'"
+    ></li>
+  </ul>
+
+  <ul class="digit mm--2">
+    <li
+      *ngFor="let i of array"
+      class="digit__item item--{{i}}"
+      [class.active]="aciveMM[1].includes(i)"
+      [ngClass]="[1,4,7].includes(i) ? 'item--h' : 'item--v'"
+    ></li>
+  </ul>
+
+  <span class="dottes"></span>
+
+  <ul class="digit ss--0">
+    <li
+      *ngFor="let i of array"
+      class="digit__item item--{{i}}"
+      [class.active]="aciveSS[0].includes(i)"
+      [ngClass]="[1,4,7].includes(i) ? 'item--h' : 'item--v'"
+    ></li>
+  </ul>
+
+  <ul class="digit ss--1">
+    <li
+      *ngFor="let i of array"
+      class="digit__item item--{{i}}"
+      [class.active]="aciveSS[1].includes(i)"
+      [ngClass]="[1,4,7].includes(i) ? 'item--h' : 'item--v'"
+    ></li>
+  </ul>
+
+  <ul class="digit digit--ms">
+    <li
+      *ngFor="let i of array"
+      class="digit__item item--{{i}}"
+      [class.active]="aciveMS[0].includes(i)"
+      [ngClass]="[1,4,7].includes(i) ? 'item--h' : 'item--v'"
+    ></li>
+  </ul>
+
+  <ul class="digit digit--ms">
+    <li
+      *ngFor="let i of array"
+      class="digit__item item--{{i}}"
+      [class.active]="aciveMS[1].includes(i)"
+      [ngClass]="[1,4,7].includes(i) ? 'item--h' : 'item--v'"
+    ></li>
+  </ul>
+</div>
