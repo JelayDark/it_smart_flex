@@ -1,5 +1,7 @@
-<ul>
-  <li *ngFor="let label of stopList; index as i">
-    {{label | timeFormat}} <button (click)="delete(i)">Delete</button>
-  </li>
-</ul>
+<mat-list role="list" class="list">
+  <mat-list-item role="listitem" *ngFor="let label of stopList; index as i" class="list-item">
+    {{label | timeFormat}}
+    <button class="btn-delete" mat-flat-button color="warn" (click)="delete(i)">Delete</button>
+    <mat-divider></mat-divider>
+  </mat-list-item>
+</mat-list>

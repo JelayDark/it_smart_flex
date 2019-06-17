@@ -1,0 +1,23 @@
+.controller {
+  .actions-area {
+    display: flex;
+    justify-content: center;
+    .btn-group {
+      width: 50%;
+      display: flex;
+      .btn {
+        display: flex;
+        flex-grow: 1;
+        justify-content: center;
+        align-items: center;
+        &-large {
+          flex-grow: 6;
+        }
+      }
+    }
+  }
+
+  .mat-button-toggle-checked {
+    background-color: unset;
+  }
+}

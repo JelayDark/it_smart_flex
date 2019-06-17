@@ -4,7 +4,7 @@ import {TimerService} from '../../services/timer/timer.service';
 @Component({
   selector: 'app-stop-list',
   templateUrl: './stop-list.component.html',
-  styleUrls: ['./stop-list.component.css']
+  styleUrls: ['./stop-list.component.scss']
 })
 export class StopListComponent implements OnInit {
 

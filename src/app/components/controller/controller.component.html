@@ -1,8 +1,15 @@
-<div>
-  <div>{{ticks | timeFormat}}</div>
-  <div>
-    <button (click)="control()">{{ paused ? "Start" : "Pause"}}</button>
-    <button (click)="save()">Save</button>
-    <button (click)="stop()">Stop</button>
-  </div>
-</div>
+<mat-card class="controller">
+  <mat-card-content>
+    <app-watches [ticks]="ticks"></app-watches>
+  </mat-card-content>
+  <mat-card-actions class="actions-area">
+    <mat-button-toggle-group class="btn-group" name="fontStyle" aria-label="Font Style">
+      <mat-button-toggle class="btn btn-large" (click)="control()">
+        <mat-icon>{{ paused ? "play_arrow" : "pause"}}</mat-icon>
+        {{ paused ? "Start" : "Pause"}}
+      </mat-button-toggle>
+      <mat-button-toggle class="btn" (click)="save()"><mat-icon>save</mat-icon></mat-button-toggle>
+      <mat-button-toggle class="btn" (click)="stop()"><mat-icon>delete</mat-icon></mat-button-toggle>
+    </mat-button-toggle-group>
+  </mat-card-actions>
+</mat-card>

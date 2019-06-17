@@ -5,7 +5,7 @@ import { TimerWebWorkerService } from '../../services/timer-web-worker/timer-web
 @Component({
   selector: 'app-controller',
   templateUrl: './controller.component.html',
-  styleUrls: ['./controller.component.css']
+  styleUrls: ['./controller.component.scss']
 })
 export class ControllerComponent implements OnInit, OnDestroy {
   ticks = 0;

@@ -6,17 +6,21 @@ import { AppComponent } from './app.component';
 import { ControllerComponent } from './components/controller/controller.component';
 import { StopListComponent } from './components/stop-list/stop-list.component';
 import { TimeFormatPipe } from './pipes/time-format/time-format.pipe';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { WatchesComponent } from './components/watches/watches.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ControllerComponent,
     StopListComponent,
-    TimeFormatPipe
+    TimeFormatPipe,
+    WatchesComponent
   ],
   imports: [
     LayoutComponentsModule,
-    BrowserModule
+    BrowserModule,
+    NoopAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
