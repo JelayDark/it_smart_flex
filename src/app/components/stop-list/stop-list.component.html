@@ -1,3 +1,5 @@
-<p>
-  stop-list works!
-</p>
+<ul>
+  <li *ngFor="let label of stopList; index as i">
+    {{label | timeFormat}} <button (click)="delete(i)">Delete</button>
+  </li>
+</ul>

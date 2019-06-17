@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {TimerService} from '../../services/timer/timer.service';
 
 @Component({
   selector: 'app-stop-list',
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StopListComponent implements OnInit {
 
-  constructor() { }
+  stopList: number[] = [];
+
+  constructor(private timer: TimerService) { }
 
   ngOnInit() {
+    this.stopList = this.timer.getStopList();
+    this.timer.StopListChecker.subscribe((value) => this.stopList = value);
+  }
+
+  delete(index: number): void {
+    this.timer.deleteLabel(index);
   }
 
 }
